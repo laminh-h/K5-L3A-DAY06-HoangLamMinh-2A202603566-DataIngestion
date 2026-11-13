@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-11-13T11:00:04+00:00",
+  "top_k": 3,
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "strategies": {
+    "A": {
+      "index": "A",
+      "use_filter": false,
+      "description": "Fixed 500-char windows, 50 overlap; source/page/edition/section metadata; no filter"
+    },
+    "B": {
+      "index": "B",
+      "use_filter": false,
+      "description": "Paragraph-aware chunks (<=600 chars, headings kept with paragraph); same metadata; no filter"
+    },
+    "C": {
+      "index": "B",
+      "use_filter": true,
+      "description": "Same chunks/vectors as B; metadata pre-filter applied only when the question supplies one"
+    }
+  },
+  "indexes": {
+    "A": {
+      "chunking": "fixed_size",
+      "size": 500,
+      "overlap": 50
+    },
+    "B": {
+      "chunking": "by_paragraph",
+      "max_size": 600
+    }
+  },
+  "selection_rule": "Chosen before reading test results: highest dev Evidence Hit@3; tie -> higher dev Hit@1; tie -> fewer chunks / lower ingest time.",
+  "query_embedding_seconds_all_questions": 0.902,
+  "search_seconds_per_strategy_all_questions": {
+    "A": 0.129,
+    "B": 0.073,
+    "C": 0.111
+  },
+  "summary": {
+    "A": {
+      "dev": {
+        "N": 15,
+        "hit_at_1": 7,
+        "hit_at_3": 12,
+        "hit_at_1_rate": 0.467,
+        "hit_at_3_rate": 0.8,
+        "filter_questions": 2,
+        "filter_compliant_top3": 1
+      },
+      "test": {
+        "N": 5,
+        "hit_at_1": 2,
+        "hit_at_3": 3,
+        "hit_at_1_rate": 0.4,
+        "hit_at_3_rate": 0.6,
+        "filter_questions": 2,
+        "filter_compliant_top3": 0
+      }
+    },
+    "B": {
+      "dev": {
+        "N": 15,
+        "hit_at_1": 6,
+        "hit_at_3": 9,
+        "hit_at_1_rate": 0.4,
+        "hit_at_3_rate": 0.6,
+        "filter_questions": 2,
+        "filter_compliant_top3": 0
+      },
+      "test": {
+        "N": 5,
+        "hit_at_1": 3,
+        "hit_at_3": 4,
+        "hit_at_1_rate": 0.6,
+        "hit_at_3_rate": 0.8,
+        "filter_questions": 2,
+        "filter_compliant_top3": 0
+      }
+    },
+    "C": {
+      "dev": {
+        "N": 15,
+        "hit_at_1": 6,
+        "hit_at_3": 9,
+        "hit_at_1_rate": 0.4,
+        "hit_at_3_rate": 0.6,
+        "filter_questions": 2,
+        "filter_compliant_top3": 2
+      },
+      "test": {
+        "N": 5,
+        "hit_at_1": 4,
+        "hit_at_3": 4,
+        "hit_at_1_rate": 0.8,
+        "hit_at_3_rate": 0.8,
+        "filter_questions": 2,
+        "filter_compliant_top3": 2
+      }
+    }
+  },
+  "chunk_counts": {
+    "A": 618,
+    "B": 606,
+    "C": 606
+  },
+  "cost_usd": 0.0
+}

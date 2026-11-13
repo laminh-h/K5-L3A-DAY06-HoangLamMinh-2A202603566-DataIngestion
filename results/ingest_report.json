@@ -1,0 +1,256 @@
+{
+  "runs": [
+    {
+      "timestamp": "2026-11-13T10:56:19+00:00",
+      "read_normalize_seconds": 4.42,
+      "model_load_seconds": 85.85,
+      "indexes": {
+        "A": {
+          "config": {
+            "chunking": "fixed_size",
+            "size": 500,
+            "overlap": 50
+          },
+          "chunks": 618,
+          "chars": {
+            "min": 51,
+            "median": 500.0,
+            "mean": 464.2,
+            "p90": 500,
+            "max": 500,
+            "total": 286873
+          },
+          "tokens": {
+            "min": 13,
+            "median": 108.0,
+            "mean": 104.2,
+            "p90": 123,
+            "max": 168,
+            "total": 64367
+          },
+          "truncated_chunks": 39,
+          "embedded_this_run": 618,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 618,
+          "embed_and_store_seconds": 45.13
+        },
+        "B": {
+          "config": {
+            "chunking": "by_paragraph",
+            "max_size": 600
+          },
+          "chunks": 606,
+          "chars": {
+            "min": 40,
+            "median": 463.5,
+            "mean": 429.6,
+            "p90": 576,
+            "max": 600,
+            "total": 260365
+          },
+          "tokens": {
+            "min": 10,
+            "median": 100.0,
+            "mean": 95.9,
+            "p90": 129,
+            "max": 207,
+            "total": 58115
+          },
+          "truncated_chunks": 62,
+          "embedded_this_run": 606,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 606,
+          "embed_and_store_seconds": 33.69
+        }
+      }
+    },
+    {
+      "timestamp": "2026-11-13T10:58:57+00:00",
+      "read_normalize_seconds": 2.31,
+      "model_load_seconds": 32.97,
+      "indexes": {
+        "A": {
+          "config": {
+            "chunking": "fixed_size",
+            "size": 500,
+            "overlap": 50
+          },
+          "chunks": 618,
+          "chars": {
+            "min": 51,
+            "median": 500.0,
+            "mean": 464.2,
+            "p90": 500,
+            "max": 500,
+            "total": 286873
+          },
+          "tokens": {
+            "min": 13,
+            "median": 108.0,
+            "mean": 104.2,
+            "p90": 123,
+            "max": 168,
+            "total": 64367
+          },
+          "truncated_chunks": 39,
+          "embedded_this_run": 0,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 618,
+          "embed_and_store_seconds": 0.53
+        },
+        "B": {
+          "config": {
+            "chunking": "by_paragraph",
+            "max_size": 600
+          },
+          "chunks": 606,
+          "chars": {
+            "min": 40,
+            "median": 463.5,
+            "mean": 429.6,
+            "p90": 576,
+            "max": 600,
+            "total": 260365
+          },
+          "tokens": {
+            "min": 10,
+            "median": 100.0,
+            "mean": 95.9,
+            "p90": 129,
+            "max": 207,
+            "total": 58115
+          },
+          "truncated_chunks": 62,
+          "embedded_this_run": 0,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 606,
+          "embed_and_store_seconds": 0.46
+        }
+      }
+    },
+    {
+      "timestamp": "2026-11-13T10:59:31+00:00",
+      "read_normalize_seconds": 2.45,
+      "model_load_seconds": 25.0,
+      "indexes": {
+        "A": {
+          "config": {
+            "chunking": "fixed_size",
+            "size": 500,
+            "overlap": 50
+          },
+          "chunks": 618,
+          "chars": {
+            "min": 51,
+            "median": 500.0,
+            "mean": 464.2,
+            "p90": 500,
+            "max": 500,
+            "total": 286873
+          },
+          "tokens": {
+            "min": 13,
+            "median": 108.0,
+            "mean": 104.2,
+            "p90": 123,
+            "max": 168,
+            "total": 64367
+          },
+          "truncated_chunks": 39,
+          "embedded_this_run": 0,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 618,
+          "embed_and_store_seconds": 0.42
+        },
+        "B": {
+          "config": {
+            "chunking": "by_paragraph",
+            "max_size": 600
+          },
+          "chunks": 606,
+          "chars": {
+            "min": 40,
+            "median": 463.5,
+            "mean": 429.6,
+            "p90": 576,
+            "max": 600,
+            "total": 260365
+          },
+          "tokens": {
+            "min": 10,
+            "median": 100.0,
+            "mean": 95.9,
+            "p90": 129,
+            "max": 207,
+            "total": 58115
+          },
+          "truncated_chunks": 62,
+          "embedded_this_run": 0,
+          "deleted_stale_this_run": 0,
+          "count_in_store_after": 606,
+          "embed_and_store_seconds": 0.13
+        }
+      }
+    }
+  ],
+  "embedding": {
+    "provider": "local (sentence-transformers)",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimensions": 384,
+    "max_seq_length_tokens": 128,
+    "normalize_embeddings": true,
+    "query_document_handling": "symmetric: identical encoding, no instruction prefix",
+    "versions": {
+      "sentence-transformers": "5.7.0",
+      "transformers": "5.22.2",
+      "torch": "2.15.0+cpu"
+    },
+    "revision": [
+      "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    ]
+  },
+  "vector_store": {
+    "name": "Chroma (PersistentClient, local disk)",
+    "version": "1.5.9",
+    "path": "starter\\chroma_db",
+    "collections": {
+      "A": "day6_index_A",
+      "B": "day6_index_B"
+    },
+    "metric": "cosine",
+    "search": "approximate (HNSW); metadata 'where' filter applied inside the query"
+  },
+  "corpus": {
+    "physical_pages": 124,
+    "content_pages": 98,
+    "content_chars": 260873,
+    "per_document": {
+      "ts-2017-12": 51,
+      "ts-2018-06": 47
+    }
+  },
+  "normalization_log": {
+    "empty_pages": [
+      {
+        "document_id": "ts-2017-12",
+        "page": 2
+      },
+      {
+        "document_id": "ts-2018-06",
+        "page": 2
+      },
+      {
+        "document_id": "ts-2018-06",
+        "page": 34
+      }
+    ],
+    "errors": [],
+    "removed_lines": {
+      "header": 97,
+      "page_number": 655,
+      "chart_residue": 583,
+      "disclosure": 0
+    }
+  },
+  "cost_usd": 0.0
+}

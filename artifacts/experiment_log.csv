@@ -1,4 +1,4 @@
 strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
-A,,,,,,,,,,,,
-B,,,,,,,,,,,,
-C,,,,,,,,,,,,
+A,fixed_size,500,50,document_id;source;page;edition;year;section;section_title;language;char_start;char_end,none,sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,Baseline: fixed windows may cut sentences and split evidence across chunks,7/15,12/15,2/5,3/5,index A; Chroma cosine; top-3
+B,by_paragraph,600,0,document_id;source;page;edition;year;section;section_title;language;char_start;char_end,none,sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,Paragraph-aware chunks keep claims and their numbers together -> higher Evidence Hit@3 and coherence than A,6/15,9/15,3/5,4/5,index B; Chroma cosine; top-3
+C,by_paragraph,600,0,document_id;source;page;edition;year;section;section_title;language;char_start;char_end,edition/section when question supplies it,sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,Both editions report the same indicators with different values; filtering by edition removes wrong-edition hits on filter questions,6/15,9/15,4/5,4/5,index B; Chroma cosine; top-3

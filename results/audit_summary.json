@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-11-13T11:43:12+00:00",
+  "labeller": [
+    "Claude (AI) manual row-by-row check vs PDF page text; accepted by Hoang Lam Minh 2026-11-13 without independent re-check",
+    "Hoang Lam Minh (reviewed AI draft by Claude; all labels accepted 2026-11-13)"
+  ],
+  "strategies": {
+    "A": {
+      "coherence_mean_of_2": 1.0,
+      "coherence_n": 10,
+      "coherence_note": "",
+      "metadata_correct": "15/15",
+      "filter_compliant_test": "0/2",
+      "grounding_counts": {
+        "0": 2,
+        "1": 1,
+        "2": 2
+      },
+      "grounding_mean_of_2": 1.0,
+      "grounding_n": 5
+    },
+    "B": {
+      "coherence_mean_of_2": 1.7,
+      "coherence_n": 10,
+      "coherence_note": "",
+      "metadata_correct": "15/15",
+      "filter_compliant_test": "0/2",
+      "grounding_counts": {
+        "0": 1,
+        "1": 1,
+        "2": 3
+      },
+      "grounding_mean_of_2": 1.4,
+      "grounding_n": 5
+    },
+    "C": {
+      "coherence_mean_of_2": 1.7,
+      "coherence_n": 10,
+      "coherence_note": "C reuses B's chunks",
+      "metadata_correct": "15/15",
+      "filter_compliant_test": "2/2",
+      "grounding_counts": {
+        "0": 1,
+        "1": 0,
+        "2": 4
+      },
+      "grounding_mean_of_2": 1.6,
+      "grounding_n": 5
+    }
+  }
+}

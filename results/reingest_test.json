@@ -1,0 +1,26 @@
+{
+  "pages": [
+    10,
+    11,
+    12
+  ],
+  "first_ingest": {
+    "chunks_in_version": 28,
+    "embedded": 28,
+    "deleted_stale": 0,
+    "count_in_store": 28
+  },
+  "same_version_again": {
+    "chunks_in_version": 28,
+    "embedded": 0,
+    "deleted_stale": 0,
+    "count_in_store": 28
+  },
+  "changed_version (p2 edited, p3 removed)": {
+    "chunks_in_version": 20,
+    "embedded": 1,
+    "deleted_stale": 8,
+    "count_in_store": 20
+  },
+  "pass": true
+}

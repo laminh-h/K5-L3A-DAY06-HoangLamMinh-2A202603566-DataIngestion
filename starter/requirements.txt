@@ -1,4 +1,7 @@
-# Core setup and PDF parsing. Choose and install an embedding SDK separately.
+# Pipeline dependencies (local embeddings + Chroma; no API key needed).
+# psycopg is kept only for the optional pgvector check script (scripts/check_setup.py).
 psycopg[binary]==3.3.8
 pypdf>=5,<7
 python-dotenv>=1,<2
+chromadb>=1.0,<2
+sentence-transformers>=3,<6

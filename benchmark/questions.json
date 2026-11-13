@@ -1,0 +1,203 @@
+{
+  "description": "Day 06 benchmark over the two World Bank 'Taking Stock' Vietnam reports (ts-2017-12, ts-2018-06). Written and split BEFORE any retrieval run. Questions are in English (corpus language); question_vi is a Vietnamese translation for the reader only and is not sent to the retriever.",
+  "split_method": "Fixed by hand before experiments: 15 dev / 5 test. Test covers both editions, both Part I and Part II, and 2 filter questions. Split by question (not by document), because both documents are needed for edition-filter questions; leakage risk: some dev and test questions come from the same report sections (e.g. fiscal paragraphs), so test is not a fully independent topic holdout.",
+  "filter_semantics": "`filter` is an input the user supplies with the question BEFORE retrieval (e.g. the user says which edition of Taking Stock they are reading). It is never derived from the gold source. Only strategy C applies it; for questions without a filter, C runs unfiltered.",
+  "question_types": {
+    "direct": "wording close to the source sentence",
+    "paraphrase": "same fact asked with different wording",
+    "condition_exception": "answer requires a qualifier, comparison or exception",
+    "metadata_filter": "the same indicator is reported with different values in the two editions; the edition filter selects the right one"
+  },
+  "questions": [
+    {
+      "id": "q01", "split": "dev", "type": "direct",
+      "question": "What was the level of Vietnam's gross international reserves at the end of September 2017?",
+      "question_vi": "Dự trữ ngoại hối gộp của Việt Nam vào cuối tháng 9/2017 ở mức bao nhiêu?",
+      "expected_answer": "Around US$42 billion, equal to just below three months of imports.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 29, "evidence_quote": "bringing gross international reserves to around US$ 42 billion"},
+        {"source_id": "ts-2017-12", "page": 11, "evidence_quote": "bringing gross international reserves to around US$42 billion at the end of September"}
+      ]
+    },
+    {
+      "id": "q02", "split": "dev", "type": "direct",
+      "question": "By how much did the State Bank of Vietnam cut its rediscount and refinancing rates in July 2017, and to what levels?",
+      "question_vi": "Tháng 7/2017, Ngân hàng Nhà nước giảm lãi suất tái chiết khấu và tái cấp vốn bao nhiêu, xuống mức nào?",
+      "expected_answer": "By 25 basis points, to 4.25 percent (rediscount) and 6.25 percent (refinancing).",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 22, "evidence_quote": "cutting its rediscount rate and refinancing rate by 25 basis points to 4.25 and 6.25 percent respectively"},
+        {"source_id": "ts-2017-12", "page": 10, "evidence_quote": "cut its rediscount rate and refinancing rate by 25 basis points to 4.25 and 6.25 percent respectively"}
+      ]
+    },
+    {
+      "id": "q03", "split": "dev", "type": "condition_exception",
+      "question": "In the first nine months of 2017, what share of total spending did public investment fall to, compared with its 2012-2016 average?",
+      "question_vi": "Trong 9 tháng đầu 2017, đầu tư công giảm xuống còn bao nhiêu phần trăm tổng chi, so với mức trung bình 2012-2016?",
+      "expected_answer": "16 percent of total spending, compared with an average of 25 percent over 2012-2016.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 30, "evidence_quote": "declined to 16 percent of total spending in the first nine months of 2017, compared with an average of 25 percent"},
+        {"source_id": "ts-2017-12", "page": 31, "evidence_quote": "declined to 16 percent of total spending in the first nine months of 2017, compared with an average of 25 percent"},
+        {"source_id": "ts-2017-12", "page": 11, "evidence_quote": "declined to 16 percent of total spending in the first nine months of 2017, compared with an average of 25 percent"}
+      ]
+    },
+    {
+      "id": "q04", "split": "dev", "type": "paraphrase",
+      "question": "How many additional factory jobs, in net terms, did Vietnam create over the three years leading up to the 2017 report?",
+      "question_vi": "Trong ba năm tính đến báo cáo 2017, Việt Nam tạo thêm ròng bao nhiêu việc làm trong ngành chế tạo?",
+      "expected_answer": "1.6 million new manufacturing jobs (net).",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 18, "evidence_quote": "Vietnam added 1.6 million new manufacturing jobs (net)"},
+        {"source_id": "ts-2017-12", "page": 11, "evidence_quote": "Vietnam added 1.6 million new manufacturing jobs (net)"}
+      ]
+    },
+    {
+      "id": "q05", "split": "dev", "type": "condition_exception",
+      "question": "How does Vietnam's ratio of road maintenance to total road expenditure compare with OECD countries?",
+      "question_vi": "Tỷ lệ chi bảo trì đường bộ trên tổng chi đường bộ của Việt Nam so với các nước OECD thế nào?",
+      "expected_answer": "Only 11 percent in Vietnam, versus 30 percent in OECD countries (22 percent in Bangladesh, 37 percent in Indonesia).",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 39, "evidence_quote": "maintenance to total road expenditure ratio in Vietnam is only 11 percent, compared with 22 percent in Bangladesh, 30 percent in OECD countries"}
+      ]
+    },
+    {
+      "id": "q06", "split": "dev", "type": "direct",
+      "question": "How did the ratio of central to sub-national capital investment change between 2006-10 and the following period?",
+      "question_vi": "Tỷ lệ vốn đầu tư trung ương so với địa phương thay đổi thế nào giữa giai đoạn 2006-10 và giai đoạn sau đó?",
+      "expected_answer": "It moved from 33:67 in 2006-10 to 27:73 in 2011-15.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 37, "evidence_quote": "central and sub-national total capital investment moved from 33:67 in the period 2006-10 to 27:73"}
+      ]
+    },
+    {
+      "id": "q07", "split": "dev", "type": "paraphrase",
+      "question": "What portion of direct cash transfers goes to the poorest fifth of households, and to the next poorest fifth?",
+      "question_vi": "Nhóm 20% hộ nghèo nhất và nhóm nghèo thứ hai nhận bao nhiêu phần trăm các khoản chuyển giao tiền mặt trực tiếp?",
+      "expected_answer": "The poorest quintile receives 63 percent of all transfers and the second-poorest quintile 19 percent.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 54, "evidence_quote": "the poorest quintile receiving 63 percent of all transfers and the second-poorest quintile receiving 19 percent"}
+      ]
+    },
+    {
+      "id": "q08", "split": "dev", "type": "condition_exception",
+      "question": "Which type of public transfer is the exception to the pro-poor distribution of cash benefits?",
+      "question_vi": "Loại chuyển giao công nào là ngoại lệ, không phân bổ ưu tiên người nghèo như các khoản trợ cấp tiền mặt khác?",
+      "expected_answer": "Contributory public pensions, which largely go to the better off (the top quintile received close to half of pension income in 2014).",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 54, "evidence_quote": "An exception is contributory public pensions which largely go to the better off."}
+      ]
+    },
+    {
+      "id": "q09", "split": "dev", "type": "direct",
+      "question": "How fast did Vietnam's real GDP grow in the first quarter of 2018?",
+      "question_vi": "GDP thực của Việt Nam tăng trưởng bao nhiêu trong quý I/2018?",
+      "expected_answer": "Nearly 7.4 percent (y/y), the strongest first-quarter growth in 10 years.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 16, "evidence_quote": "real GDP expanded nearly 7.4 percent (y/y) during the first quarter of 2018"},
+        {"source_id": "ts-2018-06", "page": 9, "evidence_quote": "real GDP expanded nearly 7.4 percent (y/y) during"}
+      ]
+    },
+    {
+      "id": "q10", "split": "dev", "type": "direct",
+      "question": "What credit growth and inflation targets did the State Bank of Vietnam set for 2018?",
+      "question_vi": "Ngân hàng Nhà nước đặt mục tiêu tăng trưởng tín dụng và lạm phát năm 2018 là bao nhiêu?",
+      "expected_answer": "Credit growth of 17 percent and CPI below 4 percent (also GDP growth 6.7 percent, liquidity growth 16 percent).",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 20, "evidence_quote": "maintaining CPI below 4 percent, reaching a credit growth rate of 17 percent"}
+      ]
+    },
+    {
+      "id": "q11", "split": "dev", "type": "paraphrase",
+      "question": "How much foreign direct investment was actually disbursed in Vietnam in 2017?",
+      "question_vi": "Năm 2017, vốn FDI giải ngân thực tế vào Việt Nam là bao nhiêu?",
+      "expected_answer": "A record US$17.5 billion.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 26, "evidence_quote": "foreign investors disbursed a record US$17.5 billion to Vietnam"}
+      ]
+    },
+    {
+      "id": "q12", "split": "dev", "type": "condition_exception",
+      "question": "How long does documentary compliance for imports take in Vietnam compared with the ASEAN-4 average?",
+      "question_vi": "Thời gian tuân thủ chứng từ khi nhập khẩu ở Việt Nam so với trung bình ASEAN-4 là bao lâu?",
+      "expected_answer": "76 hours in Vietnam versus 28 hours for the ASEAN-4 average.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 39, "evidence_quote": "documentary compliance (76 hours) is significantly higher than the ASEAN-4 average (28 hours)"}
+      ]
+    },
+    {
+      "id": "q13", "split": "dev", "type": "paraphrase",
+      "question": "What proportion of the total cost of importing into Vietnam comes from logistics such as domestic transport and port handling?",
+      "question_vi": "Chi phí logistics (vận tải nội địa và xếp dỡ cảng) chiếm bao nhiêu phần trăm tổng chi phí nhập khẩu vào Việt Nam?",
+      "expected_answer": "64 percent of the total cost to import (port handling alone is 39.5 percent).",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 41, "evidence_quote": "logistics costs (domestic transport and port handling) account for 64 percent of the total cost"}
+      ]
+    },
+    {
+      "id": "q14", "split": "dev", "type": "metadata_filter",
+      "question": "What was Vietnam's total public debt in 2017 as a share of GDP?",
+      "question_vi": "Tổng nợ công của Việt Nam năm 2017 bằng bao nhiêu phần trăm GDP? (người dùng đang đọc kỳ 12/2017)",
+      "filter": {"edition": "2017-12"},
+      "expected_answer": "An estimated 62.6 percent of GDP (up from 50.8 percent in 2012), close to the 65 percent statutory limit.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 32, "evidence_quote": "from 50.8 percent in 2012 to an estimated 62.6"}
+      ]
+    },
+    {
+      "id": "q15", "split": "dev", "type": "metadata_filter",
+      "question": "What record level did Vietnam's foreign reserves reach according to the report?",
+      "question_vi": "Theo báo cáo, dự trữ ngoại hối của Việt Nam đạt mức kỷ lục bao nhiêu? (người dùng đang đọc kỳ 06/2018)",
+      "filter": {"edition": "2018-06"},
+      "expected_answer": "About US$63 billion in the first four months of 2018, around 3.6 months of imports.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 26, "evidence_quote": "record-high foreign reserves of about US$63 billion"}
+      ]
+    },
+    {
+      "id": "q16", "split": "test", "type": "direct",
+      "question": "What was the Vietnam Manufacturing PMI in September 2017?",
+      "question_vi": "Chỉ số PMI ngành sản xuất của Việt Nam tháng 9/2017 là bao nhiêu?",
+      "expected_answer": "53.3, up from 51.8 in August.",
+      "gold": [
+        {"source_id": "ts-2017-12", "page": 17, "evidence_quote": "rose to 53.3 in September from 51.8 in August"}
+      ]
+    },
+    {
+      "id": "q17", "split": "test", "type": "paraphrase",
+      "question": "In the 2016 customs survey, what share of declarations went through the green channel?",
+      "question_vi": "Trong khảo sát hải quan năm 2016, bao nhiêu phần trăm tờ khai đi luồng xanh?",
+      "expected_answer": "59.8 percent of the total number of declarations.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 46, "evidence_quote": "the green channel accounts for 59.8 percent of the total number of declarations"}
+      ]
+    },
+    {
+      "id": "q18", "split": "test", "type": "condition_exception",
+      "question": "How old is Vietnam's active trucking fleet on average, compared with countries such as Australia or Japan?",
+      "question_vi": "Tuổi bình quân của đội xe tải đang hoạt động ở Việt Nam là bao nhiêu, so với Úc hay Nhật Bản?",
+      "expected_answer": "17 years on average, versus 14 years in Australia and 9 years in Canada and Japan.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 50, "evidence_quote": "active trucking fleet is 17 years, much greater than 14 years in Australia, 9 years in Canada and Japan"}
+      ]
+    },
+    {
+      "id": "q19", "split": "test", "type": "metadata_filter",
+      "question": "What was Vietnam's overall fiscal deficit in 2017 as a percentage of GDP?",
+      "question_vi": "Thâm hụt ngân sách tổng thể của Việt Nam năm 2017 là bao nhiêu phần trăm GDP? (người dùng đang đọc kỳ 06/2018)",
+      "filter": {"edition": "2018-06"},
+      "expected_answer": "An estimated 4.5 percent of GDP in 2017 (from 4.8 percent in 2016), IMF GFS definition.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 28, "evidence_quote": "an estimated 4.5 percent of GDP in 2017 from 4.8 percent in 2016"}
+      ]
+    },
+    {
+      "id": "q20", "split": "test", "type": "metadata_filter",
+      "question": "What real GDP growth rate does the World Bank project for Vietnam in 2018?",
+      "question_vi": "Ngân hàng Thế giới dự báo tăng trưởng GDP thực của Việt Nam năm 2018 là bao nhiêu? (người dùng đang đọc kỳ 06/2018)",
+      "filter": {"edition": "2018-06"},
+      "expected_answer": "6.8 percent in 2018 (revised up from 6.5 percent), then 6.6 percent in 2019 and 6.5 percent in 2020.",
+      "gold": [
+        {"source_id": "ts-2018-06", "page": 31, "evidence_quote": "real GDP now projected to expand by 6.8 percent in 2018"}
+      ]
+    }
+  ]
+}
